@@ -19,8 +19,8 @@ class Nestedcirculartorus:
         outer_region = -outer_surface
         inner_region = -inner_surface
 
-        outer_cell = openmc.Cell(region=outer_region & ~ inner_region)
-        inner_cell = openmc.Cell(region=inner_region)
+        outer_cell = openmc.Cell(region=outer_region & ~ inner_region, fill=self.materials[1])
+        inner_cell = openmc.Cell(region=inner_region, fill=self.materials[0])
 
         geometry = openmc.Geometry([cell_1, cell_2])
         model = openmc.Model(geometry=geometry)
